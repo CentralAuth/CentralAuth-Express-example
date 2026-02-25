@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body { 
   font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   max-width: 800px; 
@@ -5,6 +9,9 @@ body {
   padding: 20px; 
   text-align: center;
   background-image: url(https://wallpaperaccess.com/full/2746064.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   min-height: 100vh;
   color: #333;
 }
@@ -21,11 +28,15 @@ h1 {
   color: #00314d;
   margin-bottom: 20px;
   font-weight: 300;
-  font-size: 2.5em;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
 }
 
-#auth-section {
+#auth-section, .button-group {
   margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .btn, button.btn { 
@@ -35,7 +46,7 @@ h1 {
   color: white; 
   text-decoration: none; 
   border-radius: 8px; 
-  margin: 10px 8px;
+  margin: 0;
   font-weight: 600;
   font-size: 16px;
   border: none;
@@ -43,6 +54,8 @@ h1 {
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: inherit;
+  flex: 0 1 auto;
+  min-width: 140px;
 }
 
 .btn:hover, button.btn:hover { 
@@ -74,6 +87,13 @@ h1 {
   padding: 25px; 
   border-radius: 15px; 
   margin: 25px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.user-info img {
+  max-width: 80px;
+  height: auto;
 }
 
 .success { 
@@ -84,4 +104,96 @@ h1 {
   border-radius: 10px; 
   margin: 15px 0;
   font-weight: 500;
+}
+
+/* Responsive Design */
+/* Tablet and smaller screens */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .container {
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+  
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 15px;
+  }
+  
+  .btn, button.btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    min-width: 120px;
+  }
+  
+  .user-info, .success {
+    padding: 20px;
+    margin: 20px 0;
+  }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+  body {
+    margin: 10px auto;
+    padding: 10px;
+    background-attachment: scroll;
+  }
+  
+  .container {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  h1 {
+    font-size: clamp(1.25rem, 7vw, 1.75rem);
+    margin-bottom: 12px;
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+  
+  #auth-section, .button-group {
+    margin: 20px 0;
+    gap: 8px;
+  }
+  
+  .btn, button.btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    min-width: 100px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .user-info, .success {
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 0.9rem;
+  }
+  
+  .user-info img {
+    max-width: 60px;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 360px) {
+  .container {
+    padding: 15px 10px;
+  }
+  
+  h1 {
+    font-size: 1.25rem;
+  }
+  
+  .btn, button.btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
 }

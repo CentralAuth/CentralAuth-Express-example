@@ -36,6 +36,8 @@ app.get('/', (req, res) => {
     <!DOCTYPE html>
     <html>
     <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>CentralAuth Express Example</title>
       <link rel="stylesheet" href="/styles.css">
     </head>
@@ -112,6 +114,8 @@ app.get('/profile', async (req, res) => {
     <!DOCTYPE html>
     <html>
     <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Profile - CentralAuth Express Example</title>
       <link rel="stylesheet" href="/styles.css">
     </head>
@@ -130,7 +134,7 @@ app.get('/profile', async (req, res) => {
           <p>You are not logged in.</p>
         `}
         
-        <div>
+        <div class="button-group">
           <a href="/" class="btn">Back to Home</a>
           <button onclick="fetchUserInfo()" class="btn btn-success">Refresh User Info</button>
           <a href="/api/auth/logout" class="btn btn-danger">Logout</a>

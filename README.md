@@ -46,6 +46,15 @@ AUTH_BASE_URL=https://centralauth.com
 BASE_URL=http://localhost:3000
 ```
 
+### 3. Configure Whitelisted Domains
+
+In your CentralAuth dashboard, configure the allowed domains for your application:
+
+- **For localhost**: Enable the **"Allow localhost"** setting during development (no additional configuration needed)
+- **For production**: Add your domain to the **whitelist domains** list. You only need to register the base domain (e.g., `example.com`), not the full callback URL path
+
+The SDK will automatically handle the `/api/auth/callback` path for all whitelisted domains.
+
 ## Running the Server
 
 ```bash
@@ -61,17 +70,17 @@ The server will start on `http://localhost:3000` (or any other base URL you have
 1. **Home Page** (`/`): Click "Login with CentralAuth"
 2. **Redirect to CentralAuth**: You'll be redirected to the CentralAuth login page
 3. **Authenticate**: Enter your credentials or sign up
-4. **Callback**: CentralAuth redirects back to `/auth/callback`
+4. **Callback**: CentralAuth redirects back to `/api/auth/callback`
 5. **Profile Page** (`/profile`): View your authenticated user information
 6. **Logout**: Click "Logout" to clear your session and return home
 
 ## API Endpoints
 
 - `GET /` - Home page with login button
-- `GET /auth/login` - Initiates the login flow
-- `GET /auth/callback` - OAuth2 callback endpoint (handled by CentralAuth SDK)
-- `GET /auth/user` - Returns current user info as JSON
-- `GET /auth/logout` - Logs out the user
+- `GET /api/auth/login` - Initiates the login flow
+- `GET /api/auth/callback` - OAuth2 callback endpoint (handled by CentralAuth SDK)
+- `GET /api/auth/user` - Returns current user info as JSON
+- `GET /api/auth/logout` - Logs out the user
 - `GET /profile` - Protected profile page (requires authentication)
 
 ## Project Structure
@@ -97,7 +106,7 @@ const authClient = new CentralAuthHTTPClass({
   clientId: process.env.AUTH_ORGANIZATION_ID,
   secret: process.env.AUTH_SECRET,
   authBaseUrl: process.env.AUTH_BASE_URL,
-  callbackUrl: `${baseUrl}/auth/callback`
+  callbackUrl: `${baseUrl}/api/auth/callback`
 });
 ```
 

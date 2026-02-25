@@ -18,7 +18,7 @@ const getCentralAuthInstance = () => {
     clientId: process.env.AUTH_ORGANIZATION_ID,
     secret: process.env.AUTH_SECRET,
     authBaseUrl: process.env.AUTH_BASE_URL,
-    callbackUrl: `${baseUrl}/auth/callback`,
+    callbackUrl: `${baseUrl}/api/auth/callback`,
     debug: true
   });
 }
@@ -45,9 +45,9 @@ app.get('/', (req, res) => {
         <p>Welcome to the CentralAuth integration example using Express.js!</p>
         
         <div id="auth-section">
-          <a href="/auth/login" class="btn">Login with CentralAuth</a>
+          <a href="/api/auth/login" class="btn">Login with CentralAuth</a>
           <a href="/profile" class="btn btn-success">View Profile</a>
-          <a href="/auth/logout" class="btn btn-danger">Logout</a>
+          <a href="/api/auth/logout" class="btn btn-danger">Logout</a>
         </div>
       </div>
     </body>
@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
 });
 
 // Authentication routes
-app.get('/auth/login', async (req, res) => {
+app.get('/api/auth/login', async (req, res) => {
   try {
     const authClient = getCentralAuthInstance();
     await authClient.loginHTTP(req, res, { returnTo: `${baseUrl}/profile` });
@@ -66,7 +66,7 @@ app.get('/auth/login', async (req, res) => {
   }
 });
 
-app.get('/auth/callback', async (req, res) => {
+app.get('/api/auth/callback', async (req, res) => {
   try {
     const authClient = getCentralAuthInstance();
     await authClient.callbackHTTP(req, res);
@@ -76,7 +76,7 @@ app.get('/auth/callback', async (req, res) => {
   }
 });
 
-app.get('/auth/user', async (req, res) => {
+app.get('/api/auth/user', async (req, res) => {
   try {
     const authClient = getCentralAuthInstance();
     await authClient.userHTTP(req, res);
@@ -86,7 +86,7 @@ app.get('/auth/user', async (req, res) => {
   }
 });
 
-app.get('/auth/logout', async (req, res) => {
+app.get('/api/auth/logout', async (req, res) => {
   try {
     const authClient = getCentralAuthInstance();
     // Handle logout with CentralAuth
@@ -133,14 +133,14 @@ app.get('/profile', async (req, res) => {
         <div>
           <a href="/" class="btn">Back to Home</a>
           <button onclick="fetchUserInfo()" class="btn btn-success">Refresh User Info</button>
-          <a href="/auth/logout" class="btn btn-danger">Logout</a>
+          <a href="/api/auth/logout" class="btn btn-danger">Logout</a>
         </div>
       </div>
       
       <script>
         async function fetchUserInfo() {
           try {
-            const response = await fetch('/auth/user');
+            const response = await fetch('/api/auth/user');
             if (response.ok) {
               const userData = await response.json();
               alert('User info: ' + JSON.stringify(userData, null, 2));

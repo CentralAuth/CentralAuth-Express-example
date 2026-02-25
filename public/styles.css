@@ -179,6 +179,7 @@ h1 {
   
   .user-info img {
     max-width: 60px;
+    height: auto;
   }
 }
 
@@ -195,5 +196,10 @@ h1 {
   .btn, button.btn {
     font-size: 13px;
     padding: 6px 12px;
+  }
+  
+  .user-info img {
+    max-width: 60px;
+    height: auto;
   }
 }

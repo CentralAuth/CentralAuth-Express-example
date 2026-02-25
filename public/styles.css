@@ -41,7 +41,7 @@ h1 {
 
 .btn, button.btn { 
   display: inline-block;
-  padding: 12px 24px; 
+  padding: 8px 24px; 
   background: #00314d;
   color: white; 
   text-decoration: none; 
@@ -125,7 +125,7 @@ h1 {
   }
   
   .btn, button.btn {
-    padding: 10px 20px;
+    padding: 8px 20px;
     font-size: 15px;
     min-width: 120px;
   }
@@ -164,7 +164,7 @@ h1 {
   }
   
   .btn, button.btn {
-    padding: 10px 16px;
+    padding: 8px 16px;
     font-size: 14px;
     min-width: 100px;
     width: 100%;
@@ -194,6 +194,6 @@ h1 {
   
   .btn, button.btn {
     font-size: 13px;
-    padding: 8px 12px;
+    padding: 6px 12px;
   }
 }

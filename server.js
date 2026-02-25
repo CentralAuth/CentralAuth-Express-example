@@ -136,26 +136,9 @@ app.get('/profile', async (req, res) => {
         
         <div class="button-group">
           <a href="/" class="btn">Back to Home</a>
-          <button onclick="fetchUserInfo()" class="btn btn-success">Refresh User Info</button>
           <a href="/api/auth/logout" class="btn btn-danger">Logout</a>
         </div>
       </div>
-      
-      <script>
-        async function fetchUserInfo() {
-          try {
-            const response = await fetch('/api/auth/user');
-            if (response.ok) {
-              const userData = await response.json();
-              alert('User info: ' + JSON.stringify(userData, null, 2));
-            } else {
-              alert('Failed to fetch user info. Please log in.');
-            }
-          } catch (error) {
-            alert('Error fetching user info: ' + error.message);
-          }
-        }
-      </script>
     </body>
     </html>
   `);

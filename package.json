@@ -1,0 +1,17 @@
+{
+  "name": "centralauth-express-example",
+  "module": "index.ts",
+  "type": "module",
+  "private": false,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "centralauth": "^0.2.47",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}

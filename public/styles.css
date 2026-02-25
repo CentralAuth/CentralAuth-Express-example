@@ -1,0 +1,87 @@
+body { 
+  font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  max-width: 800px; 
+  margin: 50px auto; 
+  padding: 20px; 
+  text-align: center;
+  background-image: url(https://wallpaperaccess.com/full/2746064.jpg);
+  min-height: 100vh;
+  color: #333;
+}
+
+.container { 
+  background: rgba(255, 255, 255, 0.95); 
+  padding: 40px; 
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  color: #00314d;
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 2.5em;
+}
+
+#auth-section {
+  margin: 30px 0;
+}
+
+.btn, button.btn { 
+  display: inline-block;
+  padding: 12px 24px; 
+  background: #00314d;
+  color: white; 
+  text-decoration: none; 
+  border-radius: 8px; 
+  margin: 10px 8px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+}
+
+.btn:hover, button.btn:hover { 
+  background: #052f4a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-success, button.btn-success {
+  background: #0d542b;
+}
+
+.btn-success:hover, button.btn-success:hover {
+  background: #032e15;
+}
+
+.btn-danger, button.btn-danger {
+  background: #9f0712;
+}
+
+.btn-danger:hover, button.btn-danger:hover {
+  background: #82181a;
+}
+
+.user-info { 
+  text-align: center;
+  background-color: #e1e2e7;
+  border: 1px solid #c3e6cb;
+  color: #0d542b;
+  padding: 25px; 
+  border-radius: 15px; 
+  margin: 25px 0;
+}
+
+.success { 
+  background-color: #d1ecf1;
+  border: 1px solid #b8daff;
+  color: #0c5460; 
+  padding: 15px; 
+  border-radius: 10px; 
+  margin: 15px 0;
+  font-weight: 500;
+}

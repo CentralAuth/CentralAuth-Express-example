@@ -104,8 +104,8 @@ app.get('/api/auth/user', async (req, res) => {
 app.get('/api/auth/logout', async (req, res) => {
   try {
     const authClient = getCentralAuthInstance();
-    // Handle logout with CentralAuth
-    await authClient.logoutHTTP(req, res, { returnTo: baseUrl });
+    // Handle logout session-wide to ensure all sessions are cleared across all domains
+    await authClient.logoutHTTP(req, res, { returnTo: baseUrl, logoutSessionWide: true });
   } catch (error) {
     console.error('Logout error:', error);
     res.redirect('/?error=logout_failed');

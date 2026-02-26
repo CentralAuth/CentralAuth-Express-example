@@ -94,6 +94,7 @@ h1 {
 .user-info img {
   max-width: 80px;
   height: auto;
+  border-radius: 100%;
 }
 
 .success { 
@@ -102,6 +103,16 @@ h1 {
   color: #0c5460; 
   padding: 15px; 
   border-radius: 10px; 
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 10px;
   margin: 15px 0;
   font-weight: 500;
 }
@@ -180,6 +191,7 @@ h1 {
   .user-info img {
     max-width: 60px;
     height: auto;
+    border-radius: 100%;
   }
 }
 
@@ -201,5 +213,6 @@ h1 {
   .user-info img {
     max-width: 60px;
     height: auto;
+    border-radius: 100%;
   }
 }

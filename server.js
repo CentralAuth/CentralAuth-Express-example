@@ -23,6 +23,17 @@ const getCentralAuthInstance = () => {
   });
 }
 
+const getErrorMessage = (errorCode) => {
+  const errors = {
+    'not_logged_in': 'You need to be logged in to view the profile.',
+    'logout_failed': 'Logout failed. Please try again.',
+    'callback_failed': 'Authentication callback failed. Please try logging in again.',
+    'login_failed': 'Login failed. Please try again.',
+    'user_info_failed': 'Failed to get user information. Please try again.'
+  };
+  return errors[errorCode] || 'An error occurred.';
+};
+
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -46,6 +57,8 @@ app.get('/', (req, res) => {
         <h1>CentralAuth Express.js Example</h1>
         <p>Welcome to the CentralAuth integration example using Express.js!</p>
         
+        ${req.query.error ? `<div class="error">${getErrorMessage(req.query.error)}</div>` : ''}
+        
         <div id="auth-section">
           <a href="/api/auth/login" class="btn">Login with CentralAuth</a>
           <a href="/profile" class="btn btn-success">View Profile</a>
@@ -64,7 +77,7 @@ app.get('/api/auth/login', async (req, res) => {
     await authClient.loginHTTP(req, res, { returnTo: `${baseUrl}/profile` });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).send('Authentication failed');
+    res.redirect('/?error=login_failed');
   }
 });
 
@@ -74,7 +87,7 @@ app.get('/api/auth/callback', async (req, res) => {
     await authClient.callbackHTTP(req, res);
   } catch (error) {
     console.error('Callback error:', error);
-    res.status(500).send('Authentication callback failed');
+    res.redirect('/?error=callback_failed');
   }
 });
 
@@ -84,7 +97,7 @@ app.get('/api/auth/user', async (req, res) => {
     await authClient.userHTTP(req, res);
   } catch (error) {
     console.error('User info error:', error);
-    res.status(500).json({ error: 'Failed to get user information' });
+    res.redirect('/?error=user_info_failed');
   }
 });
 
@@ -108,6 +121,7 @@ app.get('/profile', async (req, res) => {
   } catch (error) {
     console.log('Could not fetch fresh user data');
     res.redirect('/?error=not_logged_in');
+    return;
   }
 
   res.send(`
@@ -124,10 +138,11 @@ app.get('/profile', async (req, res) => {
         <h1>User Profile</h1>
         
         ${req.query.success ? '<div class="success">Successfully logged in!</div>' : ''}
+        ${req.query.error ? `<div class="error">${getErrorMessage(req.query.error)}</div>` : ''}
         
         ${user ? `
           <div class="user-info">
-            <img src="${user.gravatar}" alt="User Avatar" style="border-radius: 50%; width: 80px; height: 80px; margin-vertical: 8px;">
+            <img src="${user.gravatar}" alt="User Avatar">
             <p><strong>Email:</strong> ${user.email}</p>
           </div>
         ` : `

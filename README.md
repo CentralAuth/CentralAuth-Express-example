@@ -6,6 +6,8 @@ This repo contains a small demo showing how to integrate [CentralAuth](https://c
 
 This example demonstrates a complete OAuth2-based authentication flow using CentralAuth as the identity provider. Users can log in via CentralAuth, view their profile, and log out with minimal code.
 
+**Live Demo**: [https://express-example.centralauth.com](https://express-example.centralauth.com)
+
 ## Features
 
 - **OAuth2 Login Flow**: Seamless login redirect to CentralAuth

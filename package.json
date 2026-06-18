@@ -1,13 +1,9 @@
 {
   "name": "centralauth-express-example",
-  "module": "index.ts",
-  "type": "module",
   "private": false,
+  "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   },
   "dependencies": {
     "centralauth": "^0.2.47",
